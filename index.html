@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فاطمة البيست فريند 💗</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ min-height:100vh;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ padding:20px;
+ font-family:Tahoma,Arial;
+ text-align:center;
+ color:#79445f;
+ background:linear-gradient(135deg,#ffe0ed,#e9ddff,#d9f4ff);
+ overflow-x:hidden;
+}
+
+.container{width:100%;max-width:430px}
+
+h1{
+ color:#d65b91;
+ font-size:38px;
+ text-shadow:0 0 15px white;
+}
+
+.subtitle{color:#a45e83;line-height:2}
+
+.heart{
+ font-size:65px;
+ animation:beat 1s infinite;
+}
+
+@keyframes beat{
+ 50%{transform:scale(1.2)}
+}
+
+.envelope{
+ margin:55px auto 25px;
+ width:180px;
+ height:110px;
+ background:#f5a8c9;
+ border-radius:12px;
+ position:relative;
+ cursor:pointer;
+ box-shadow:0 12px 25px #bb719b55;
+ animation:float 2s infinite;
+}
+
+@keyframes float{
+ 50%{transform:translateY(-10px)}
+}
+
+.envelope:before{
+ content:"";
+ position:absolute;
+ top:0;
+ left:0;
+ border-left:90px solid transparent;
+ border-right:90px solid transparent;
+ border-top:65px solid #df79aa;
+}
+
+.envelope:after{
+ content:"💌";
+ position:absolute;
+ top:40px;
+ left:72px;
+ font-size:35px;
+}
+
+.card{
+ display:none;
+ background:#ffffffc9;
+ border:2px solid white;
+ border-radius:25px;
+ padding:25px 18px;
+ box-shadow:0 12px 35px #b97ba855;
+ animation:appear .8s;
+}
+
+@keyframes appear{
+ from{opacity:0;transform:translateY(25px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+h2{color:#d65b91}
+
+.message{
+ line-height:2.3;
+ font-size:16px;
+}
+
+button{
+ border:0;
+ padding:13px 24px;
+ border-radius:30px;
+ background:linear-gradient(120deg,#e878aa,#aa8be5);
+ color:white;
+ font-size:15px;
+ cursor:pointer;
+ margin-top:18px;
+}
+
+.extra{
+ display:none;
+ margin-top:20px;
+ line-height:2.2;
+ color:#b34e86;
+}
+
+.footer{
+ margin-top:28px;
+ font-size:12px;
+ color:#a66b8b;
+}
+
+.floating{
+ position:fixed;
+ bottom:-30px;
+ animation:rise 6s linear forwards;
+ pointer-events:none;
+}
+
+@keyframes rise{
+ to{
+  transform:translateY(-110vh) rotate(360deg);
+  opacity:0;
+ }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+ <div style="font-size:45px">🦋🌸</div>
+
+ <h1>FATMA'S BEST FRIEND</h1>
+
+ <div class="subtitle">
+  فيه واحدة كده اسمها شروق...<br>
+  واخدة مكانة خاصة في قلب فاطمة 💗
+ </div>
+
+ <div class="envelope" id="envelope"
+ onclick="openLetter()"></div>
+
+ <div id="hint">افتحي جوابك يا شروق 🥹</div>
+
+ <div class="card" id="card">
+
+  <div class="heart">💗</div>
+
+  <h2>إلى شروق.. من فاطمة ❤️</h2>
+
+  <div class="message">
+   عارفة يا شروق؟<br>
+   أنا مش محتاجة مناسبة عشان أقولك<br>
+   إنك من أجمل الناس اللي دخلوا حياتي.<br><br>
+
+   إنتِ مش مجرد صاحبتي،<br>
+   إنتِ أختي اللي اختارها قلبي.<br><br>
+
+   بحب ضحكنا وهزارنا ورغينا،<br>
+   وحتى خناقاتنا اللي ملهاش لازمة 😂<br><br>
+
+   نفسي نفضل مع بعض دايمًا،<br>
+   ونحقق أحلامنا ونفضل سند لبعض.<br><br>
+
+   ربنا ما يحرمنيش منك يا شروق،<br>
+   بحبك يا بيست فريند 💗
+  </div>
+
+  <button onclick="surprise()">
+   عندي اعتراف ليكي 😂
+  </button>
+
+  <div class="extra" id="extra">
+   <div style="font-size:45px">👭💗😂</div>
+
+   الاعتراف هو إنك بقيتي جزء من يومي،<br>
+   ومهما اتخانقنا هتفضلي صاحبتي.<br><br>
+
+   ومعلش بقى استحملي فاطمة،<br>
+   أصل مفيش منها اتنين 😂💗<br><br>
+
+   FOREVER YOU & ME 🦋
+  </div>
+
+ </div>
+
+ <div class="footer">
+  MADE WITH LOVE BY FATMA ♡
+ </div>
+
+</div>
+
+<script>
+function openLetter(){
+ document.getElementById("envelope").style.display="none";
+ document.getElementById("hint").style.display="none";
+ document.getElementById("card").style.display="block";
+}
+
+function surprise(){
+ document.getElementById("extra").style.display="block";
+
+ for(let i=0;i<30;i++){
+  setTimeout(makeHeart,i*100);
+ }
+}
+
+function makeHeart(){
+ let item=document.createElement("div");
+ item.className="floating";
+ item.innerHTML=["💗","🦋","🌸","✨"][Math.floor(Math.random()*4)];
+ item.style.left=Math.random()*100+"vw";
+ item.style.fontSize=(18+Math.random()*20)+"px";
+ document.body.appendChild(item);
+ setTimeout(()=>item.remove(),6000);
+}
+
+setInterval(makeHeart,700);
+</script>
+
+</body>
+</html>
